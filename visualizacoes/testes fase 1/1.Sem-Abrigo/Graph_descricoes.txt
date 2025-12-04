@@ -1,0 +1,41 @@
+Graph 1 - Bar chart
+Valor médio m2 compra casa (2018-2023)
+
+Graph 2 - Bar chart
+Valor máximo m2 compra casa (2018-2023) - Lisboa
+
+Graph 3 - Contour Plot
+Valor m2 compra casa (2018-2023)
+
+Graph 4 - Bar chart
+Valor m2 compra casa por Distritos (2018-2023)
+
+Graph 5 - Bar chart
+Valor médio m2 arrendar casa (2018-2023)
+
+Graph 6 - Bar chart
+Valor máximo m2 arrendar casa (2018-2023) - lisboa
+
+Graph 7 - Contour Plot
+Valor m2 arrendamento casa (2018-2023)
+
+Graph 8 - Bar chart
+Valor m2 arrendamento casa por Distritos (2018-2023)
+
+Graph 9 - Bar chart
+Número médio PSSA (2018-2023)
+
+Graph 10 - Bar chart
+Número máximo PSSA (2018-2023) - Lisboa
+
+Graph 11 - Contour Plot
+Número PSSA (2018-2023)
+
+Graph 12 - Bar chart
+Número PSSA por Distritos (2018-2023)
+
+Graph 13 - Sunburst Diagram
+Número PSSA por Distritos sem normalização (2018-2023)
+
+Graph 13 - Matrix plot 
+Número PSSA por Distritos sem normalização (2018-2023)
