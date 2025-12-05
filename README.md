@@ -29,18 +29,18 @@ O tratamento de dados seguiu um pipeline estruturado:
 ## Visualizações
 1. A Geografia da Exclusão
 Visualização da Taxa de Sem-Abrigo por 10.000 Habitantes. 
-![Heatmap Preview](visualizations/heatmap_azul_final.png)
-*(Link para a imagem acima caso queira mostrar uma prévia logo na entrada)*
+![Preview](visualizations/heatmap_azul_final.png)
+*(Link para a imagem acima)*
 
 2. Desigualdade na distribuição do rendimento
 Visualização da desigualdade na distribuição do rendimento bruto declarado por distrito. (Insira aqui o link ou a imagem do seu segundo gráfico)
-![Heatmap Preview](visualizations/heatmap_azul_final.png)
-*(Link para a imagem acima caso queira mostrar uma prévia logo na entrada)*
+![Preview](visualizations/heatmap_azul_final.png)
+*(Link para a imagem acima)*
 
 3. Poder de compra
 Visualização do poder de compra por distrito. (Insira aqui o link ou a imagem do seu segundo gráfico)
-![Heatmap Preview](visualizations/heatmap_azul_final.png)
-*(Link para a imagem acima caso queira mostrar uma prévia logo na entrada)*
+![Preview](visualizations/heatmap_azul_final.png)
+*(Link para a imagem acima)*
 
 
 ---
