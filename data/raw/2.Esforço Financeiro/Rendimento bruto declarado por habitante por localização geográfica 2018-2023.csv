@@ -1,0 +1,56 @@
+
+Quadro extraído em 03 de Dezembro de 2025 (00:12:38)
+http://www.ine.pt
+
+
+
+Localização geográfica (NUTS - 2024);Rendimento bruto declarado por habitante (?) por Localização geográfica (NUTS - 2024) -  Anual;;;;;;
+;Período de referência dos dados;;;;;;
+;2023;2022;2021;2020;2019;2018;
+;? ;? ;? ;? ;? ;? ;
+1111609: Viana do Castelo;11577;10681;9884;9296;9086;8639;
+1120303: Braga;12260;11407;10545;9942;9698;9263;
+11A1312: Porto;15653;14938;14122;13356;13220;12653;
+11D1714: Vila Real;11726;10914;10158;9557;9288;8818;
+11E0402: Bragança;11258;10557;9975;9405;9159;8789;
+1910105: Aveiro;13563;12656;11914;11291;11199;10692;
+1920603: Coimbra;15145;14255;13412;12781;12567;12080;
+1931009: Leiria;12367;11502;10682;10151;9949;9480;
+1941823: Viseu;11815;10954;10125;9550;9351;8857;
+1950502: Castelo Branco;11899;11147;10314;9830;9507;9096;
+1960907: Guarda;11838;10969;10258;9763;9490;9039;
+1D31416: Santarém;11884;11136;10352;9929;9660;9242;
+1A0: Grande Lisboa;14922;14102;13123;12506;12546;11987;
+1C20205: Beja;12275;11312;10591;9986;9736;9300;
+1C31214: Portalegre;12635;11779;10877;10344;10067;9694;
+1C40705: Évora;13600;12642;11769;11141;11005;10454;
+1500805: Faro;13465;12492;11369;10613;10766;10347;
+20: Região Autónoma dos Açores;11211;10457;9673;9039;8783;8366;
+30: Região Autónoma da Madeira;10900;9963;9017;8415;8361;7865;
+
+Rendimento bruto declarado por habitante (?) por Localização geográfica (NUTS - 2024) -  Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.
+
+
+Última atualização destes dados: 25 de julho de 2025
+
+
+Metainformação associada ao quadro
+
+Rendimento bruto declarado por habitante (?)
+Designação;Rendimento bruto declarado por habitante (?) por Localização geográfica (NUTS - 2024) -  Anual
+Periodicidade;Anual
+Fonte;INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.
+Primeiro período disponível;2018
+Último período disponível;2023
+Dimensões
+     Dimensão 1;Período de referência dos dados
+     Dimensão 2;Localização geográfica (NUTS - 2024)
+Conceitos
+     IMPOSTO SOBRE O RENDIMENTO DE PESSOAS SINGULARES;Imposto que incide sobre o valor anual dos rendimentos das pessoas singulares residentes em Portugal, independentemente do local onde foram obtidos, e sobre o valor dos rendimentos obtidos em Portugal por não residentes.
+     RENDIMENTO BRUTO DECLARADO;Rendimento que corresponde: 1) ao valor do rendimento não isento antes de efetuada qualquer dedução específica para as categorias A (Trabalho dependente) e H (Pensões); 2) ao valor do rendimento líquido, ou seja, ao valor do rendimento depois de efetuadas as respetivas deduções específicas, para as restantes categorias.
+     PERÍODO DE REFERÊNCIA;Período a que a informação se refere e que pode ser um dia específico ou um intervalo de tempo (mês, ano fiscal, ano civil, entre outros).
+Definição;
+Fórmula;&lt - p&gt - Rendimento bruto declarado/ Popula&ccedil - &atilde - o m&eacute - dia anual residente&lt - /p&gt - 
+Unidade de Medida (símbolo);Euro (?)
+Potência de 10;0
+Data da última atualização;25-Jul-2025

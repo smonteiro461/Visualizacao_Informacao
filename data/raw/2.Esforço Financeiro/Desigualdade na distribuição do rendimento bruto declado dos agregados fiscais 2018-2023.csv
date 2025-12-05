@@ -1,0 +1,61 @@
+
+Quadro extraído em 02 de Dezembro de 2025 (19:14:04)
+http://www.ine.pt
+
+
+
+Localização geográfica (NUTS - 2024);Desigualdade na distribuição do rendimento bruto declarado dos agregados fiscais (P90/P10 - N.º) por Localização geográfica (NUTS - 2024) -  Anual (1) ;;;;;;
+;Período de referência dos dados;;;;;;
+;2023;2022;2021;2020;2019;2018;
+;N.º ;N.º ;N.º ;N.º ;N.º ;N.º ;
+1111609: Viana do Castelo;7,8;7,7;7,7;7,7;7,8;7,9;
+1120303: Braga;8,6;8,6;8,4;8,5;8,1;8,3;
+11A1312: Porto;13,1;13;12,8;12,8;12,1;12,6;
+11D1714: Vila Real;9,2;9;8,9;9,5;9,2;9,9;
+11E0402: Bragança;9,1;9;9,3;9,2;9,2;8,8;
+1910105: Aveiro;8,9;8,8;8,5;8,9;8,7;8,8;
+1920603: Coimbra;9,4;9,3;9,2;9,2;9,1;9,3;
+1931009: Leiria;7,3;7,1;7;7,1;7,2;7,2;
+1941823: Viseu;8,2;8,1;8,1;8,3;8,1;8,2;
+1950502: Castelo Branco;7,1;7,1;6,9;7;7;7,1;
+1960907: Guarda;7,3;7,4;7,6;7,6;7,5;7,6;
+1D31416: Santarém;8,6;7,8;7,4;7,8;7,5;7,6;
+1A0: Grande Lisboa;11;10,7;10,5;10,6;9,9;10,2;
+1A01106: Lisboa;14,4;14,3;14,2;14,4;13,2;13,4;
+1C20205: Beja;9,1;8,2;7,7;7,8;7,8;7,7;
+1C31214: Portalegre;6,9;6,9;6,8;7;6,8;6,8;
+1C40705: Évora;7,2;7,2;7,2;7,4;7,1;7,3;
+1500805: Faro;9,8;9,9;10,1;10,6;9,3;9,4;
+200: Região Autónoma dos Açores;7,7;8;8;8,3;8,4;8,9;
+300: Região Autónoma da Madeira;8,1;8;8,8;8,8;8,3;8,6;
+
+Desigualdade na distribuição do rendimento bruto declarado dos agregados fiscais (P90/P10 - N.º) por Localização geográfica (NUTS - 2024) -  Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.
+
+Nota(s):
+(1) A informação exclui os agregados fiscais com rendimento bruto declarado deduzido do IRS liquidado menor que zero.
+
+
+
+Última atualização destes dados: 25 de julho de 2025
+
+
+Metainformação associada ao quadro
+
+Desigualdade na distribuição do rendimento bruto declarado dos agregados fiscais (P90/P10 - N.º)
+Designação;Desigualdade na distribuição do rendimento bruto declarado dos agregados fiscais (P90/P10 - N.º) por Localização geográfica (NUTS - 2024) -  Anual
+Periodicidade;Anual
+Fonte;INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.
+Primeiro período disponível;2018
+Último período disponível;2023
+Dimensões
+     Dimensão 1;Período de referência dos dados
+     Dimensão 2;Localização geográfica (NUTS - 2024)
+Conceitos
+     AGREGADO FISCAL;Agregado familiar constituído por: a) cônjuges não separados judicialmente de pessoas e bens, ou os unidos de facto, e respetivos dependentes; b) Cada um dos cônjuges ou ex-cônjuges, respetivamente, nos casos de separação judicial de pessoas e bens ou de declaração de nulidade, anulação ou dissolução do casamento, e dependentes a seu cargo; c)  pai ou  mãe solteiros e dependentes a seu cargo; d) adotante solteiro e dependentes a seu cargo.
+     RENDIMENTO BRUTO DECLARADO;Rendimento que corresponde: 1) ao valor do rendimento não isento antes de efetuada qualquer dedução específica para as categorias A (Trabalho dependente) e H (Pensões); 2) ao valor do rendimento líquido, ou seja, ao valor do rendimento depois de efetuadas as respetivas deduções específicas, para as restantes categorias.
+     PERÍODO DE REFERÊNCIA;Período a que a informação se refere e que pode ser um dia específico ou um intervalo de tempo (mês, ano fiscal, ano civil, entre outros).
+Definição;
+Fórmula;&lt - p&gt - Percentil 90 do rendimento bruto declarado/ Percentil 10 do rendimento bruto declarado&lt - /p&gt - 
+Unidade de Medida (símbolo);Número (N.º)
+Potência de 10;0
+Data da última atualização;25-Jul-2025
