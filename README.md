@@ -1,5 +1,5 @@
 # Visualizacao_Informacao
-# Habitação e a Evolução da Situação de Sem-Abrigo em Portugal (2018-2023)
+# Crise Habitacional e a População Sem-Abrigo (2018-2023) 
 Estado Atual: Fase 1 - Exploração Inicial e Prototipagem Experimental
 
 ## Contexto e Motivação
