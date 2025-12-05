@@ -34,10 +34,10 @@ Visualização da Taxa de Sem-Abrigo por 10.000 Habitantes.
 
 3. Desigualdade na distribuição do rendimento
 Visualização da desigualdade na distribuição do rendimento bruto declarado por distrito. (Insira aqui o link ou a imagem do seu segundo gráfico)
-![Preview] https://github.com/smonteiro461/Visualizacao_Informacao/blob/f9ad8fee93900fd515830d6d5ce283438d186053/visualizacoes/finais%20fase%201/2.Desigualdade%20na%20distribui%C3%A7%C3%A3o%20do%20rendimento%20bruto%20declarado%20dos%20agregados%20fiscais.png)
+![Preview](https://github.com/smonteiro461/Visualizacao_Informacao/blob/f9ad8fee93900fd515830d6d5ce283438d186053/visualizacoes/finais%20fase%201/2.Desigualdade%20na%20distribui%C3%A7%C3%A3o%20do%20rendimento%20bruto%20declarado%20dos%20agregados%20fiscais.png)
 *(Link para a imagem acima)*
 
-4. Poder de compra
+5. Poder de compra
 Visualização do poder de compra por distrito. (Insira aqui o link ou a imagem do seu segundo gráfico)
 ![Preview](visualizations/heatmap_azul_final.png)
 *(Link para a imagem acima)*
