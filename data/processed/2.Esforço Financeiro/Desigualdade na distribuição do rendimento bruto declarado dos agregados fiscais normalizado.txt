@@ -1,0 +1,115 @@
+Nome,Ano,Valor
+Viana do Castelo,2018,7.9
+Viana do Castelo,2019,7.8
+Viana do Castelo,2020,7.7
+Viana do Castelo,2021,7.7
+Viana do Castelo,2022,7.7
+Viana do Castelo,2023,7.8
+Braga,2018,8.3
+Braga,2019,8.1
+Braga,2020,8.5
+Braga,2021,8.4
+Braga,2022,8.6
+Braga,2023,8.6
+Porto,2018,12.6
+Porto,2019,12.1
+Porto,2020,12.8
+Porto,2021,12.8
+Porto,2022,13.0
+Porto,2023,13.1
+Vila Real,2018,9.9
+Vila Real,2019,9.2
+Vila Real,2020,9.5
+Vila Real,2021,8.9
+Vila Real,2022,9.0
+Vila Real,2023,9.2
+Bragança,2018,8.8
+Bragança,2019,9.2
+Bragança,2020,9.2
+Bragança,2021,9.3
+Bragança,2022,9.0
+Bragança,2023,9.1
+Aveiro,2018,8.8
+Aveiro,2019,8.7
+Aveiro,2020,8.9
+Aveiro,2021,8.5
+Aveiro,2022,8.8
+Aveiro,2023,8.9
+Coimbra,2018,9.3
+Coimbra,2019,9.1
+Coimbra,2020,9.2
+Coimbra,2021,9.2
+Coimbra,2022,9.3
+Coimbra,2023,9.4
+Leiria,2018,7.2
+Leiria,2019,7.2
+Leiria,2020,7.1
+Leiria,2021,7.0
+Leiria,2022,7.1
+Leiria,2023,7.3
+Viseu,2018,8.2
+Viseu,2019,8.1
+Viseu,2020,8.3
+Viseu,2021,8.1
+Viseu,2022,8.1
+Viseu,2023,8.2
+Castelo Branco,2018,7.1
+Castelo Branco,2019,7.0
+Castelo Branco,2020,7.0
+Castelo Branco,2021,6.9
+Castelo Branco,2022,7.1
+Castelo Branco,2023,7.1
+Guarda,2018,7.6
+Guarda,2019,7.5
+Guarda,2020,7.6
+Guarda,2021,7.6
+Guarda,2022,7.4
+Guarda,2023,7.3
+Santarém,2018,7.6
+Santarém,2019,7.5
+Santarém,2020,7.8
+Santarém,2021,7.4
+Santarém,2022,7.8
+Santarém,2023,8.6
+Grande Lisboa,2018,11.8
+Grande Lisboa,2019,11.55
+Grande Lisboa,2020,12.5
+Grande Lisboa,2021,12.35
+Grande Lisboa,2022,12.5
+Grande Lisboa,2023,12.7
+Beja,2018,7.7
+Beja,2019,7.8
+Beja,2020,7.8
+Beja,2021,7.7
+Beja,2022,8.2
+Beja,2023,9.1
+Portalegre,2018,6.8
+Portalegre,2019,6.8
+Portalegre,2020,7.0
+Portalegre,2021,6.8
+Portalegre,2022,6.9
+Portalegre,2023,6.9
+Évora,2018,7.3
+Évora,2019,7.1
+Évora,2020,7.4
+Évora,2021,7.2
+Évora,2022,7.2
+Évora,2023,7.2
+Faro,2018,9.4
+Faro,2019,9.3
+Faro,2020,10.6
+Faro,2021,10.1
+Faro,2022,9.9
+Faro,2023,9.8
+Região Autónoma dos Açores,2018,8.9
+Região Autónoma dos Açores,2019,8.4
+Região Autónoma dos Açores,2020,8.3
+Região Autónoma dos Açores,2021,8.0
+Região Autónoma dos Açores,2022,8.0
+Região Autónoma dos Açores,2023,7.7
+Região Autónoma da Madeira,2018,8.6
+Região Autónoma da Madeira,2019,8.3
+Região Autónoma da Madeira,2020,8.8
+Região Autónoma da Madeira,2021,8.8
+Região Autónoma da Madeira,2022,8.0
+Região Autónoma da Madeira,2023,8.1

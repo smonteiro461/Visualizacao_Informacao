@@ -1,0 +1,115 @@
+Distrito,Ano,Valor
+Viana do Castelo,2023,11577
+Viana do Castelo,2022,10681
+Viana do Castelo,2021,9884
+Viana do Castelo,2020,9296
+Viana do Castelo,2019,9086
+Viana do Castelo,2018,8639
+Braga,2023,12260
+Braga,2022,11407
+Braga,2021,10545
+Braga,2020,9942
+Braga,2019,9698
+Braga,2018,9263
+Porto,2023,15653
+Porto,2022,14938
+Porto,2021,14122
+Porto,2020,13356
+Porto,2019,13220
+Porto,2018,12653
+Vila Real,2023,11726
+Vila Real,2022,10914
+Vila Real,2021,10158
+Vila Real,2020,9557
+Vila Real,2019,9288
+Vila Real,2018,8818
+Bragança,2023,11258
+Bragança,2022,10557
+Bragança,2021,9975
+Bragança,2020,9405
+Bragança,2019,9159
+Bragança,2018,8789
+Aveiro,2023,13563
+Aveiro,2022,12656
+Aveiro,2021,11914
+Aveiro,2020,11291
+Aveiro,2019,11199
+Aveiro,2018,10692
+Coimbra,2023,15145
+Coimbra,2022,14255
+Coimbra,2021,13412
+Coimbra,2020,12781
+Coimbra,2019,12567
+Coimbra,2018,12080
+Leiria,2023,12367
+Leiria,2022,11502
+Leiria,2021,10682
+Leiria,2020,10151
+Leiria,2019,9949
+Leiria,2018,9480
+Viseu,2023,11815
+Viseu,2022,10954
+Viseu,2021,10125
+Viseu,2020,9550
+Viseu,2019,9351
+Viseu,2018,8857
+Castelo Branco,2023,11899
+Castelo Branco,2022,11147
+Castelo Branco,2021,10314
+Castelo Branco,2020,9830
+Castelo Branco,2019,9507
+Castelo Branco,2018,9096
+Guarda,2023,11838
+Guarda,2022,10969
+Guarda,2021,10258
+Guarda,2020,9763
+Guarda,2019,9490
+Guarda,2018,9039
+Santarém,2023,11884
+Santarém,2022,11136
+Santarém,2021,10352
+Santarém,2020,9929
+Santarém,2019,9660
+Santarém,2018,9242
+Grande Lisboa,2023,14922
+Grande Lisboa,2022,14102
+Grande Lisboa,2021,13123
+Grande Lisboa,2020,12506
+Grande Lisboa,2019,12546
+Grande Lisboa,2018,11987
+Beja,2023,12275
+Beja,2022,11312
+Beja,2021,10591
+Beja,2020,9986
+Beja,2019,9736
+Beja,2018,9300
+Portalegre,2023,12635
+Portalegre,2022,11779
+Portalegre,2021,10877
+Portalegre,2020,10344
+Portalegre,2019,10067
+Portalegre,2018,9694
+Évora,2023,13600
+Évora,2022,12642
+Évora,2021,11769
+Évora,2020,11141
+Évora,2019,11005
+Évora,2018,10454
+Faro,2023,13465
+Faro,2022,12492
+Faro,2021,11369
+Faro,2020,10613
+Faro,2019,10766
+Faro,2018,10347
+Região Autónoma dos Açores,2023,11211
+Região Autónoma dos Açores,2022,10457
+Região Autónoma dos Açores,2021,9673
+Região Autónoma dos Açores,2020,9039
+Região Autónoma dos Açores,2019,8783
+Região Autónoma dos Açores,2018,8366
+Região Autónoma da Madeira,2023,10900
+Região Autónoma da Madeira,2022,9963
+Região Autónoma da Madeira,2021,9017
+Região Autónoma da Madeira,2020,8415
+Região Autónoma da Madeira,2019,8361
+Região Autónoma da Madeira,2018,7865
