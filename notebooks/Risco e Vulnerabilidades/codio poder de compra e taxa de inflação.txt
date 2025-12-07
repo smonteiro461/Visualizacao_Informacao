@@ -1,0 +1,59 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib.ticker as mticker
+
+# Data provided by the user
+new_data_correlation = {
+    'Ano': [2018, 2019, 2020, 2021, 2022, 2023],
+    'Poder_de_Compra_(milhões)': [205184.12, 214374.62, 200518.86, 216493.75, 243957.09, 267384.33],
+    'Taxa de Inflação Total (%)': [0.99, 0.34, -0.01, 1.27, 7.83, 4.31]
+}
+
+df_correlation = pd.DataFrame(new_data_correlation)
+
+# Set a seaborn style for better aesthetics
+sns.set_theme(style="whitegrid")
+
+# Create a figure and a set of subplots with two y-axes
+fig, ax1 = plt.subplots(figsize=(14, 8))
+
+# Plot 'Poder de Compra' on the first y-axis (ax1)
+color_compra = 'tab:blue'
+ax1.set_xlabel('Ano', fontsize=12)
+ax1.set_ylabel('Poder de Compra (milhões)', color=color_compra, fontsize=12)
+ax1.plot(df_correlation['Ano'], df_correlation['Poder_de_Compra_(milhões)'], color=color_compra, marker='o', linestyle='-', label='Poder de Compra (milhões)', linewidth=2, markersize=7)
+ax1.tick_params(axis='y', labelcolor=color_compra)
+
+# Add data labels for Poder de Compra
+for x, y in zip(df_correlation['Ano'], df_correlation['Poder_de_Compra_(milhões)']):
+    ax1.text(x, y + (df_correlation['Poder_de_Compra_(milhões)'].max() * 0.03), f'{y:,.2f}'.replace(',', ' '), color=color_compra, fontsize=9, ha='center', va='bottom') # Increased offset
+
+# Create a second y-axis (ax2) that shares the same x-axis as ax1
+ax2 = ax1.twinx()
+color_inflacao = 'tab:red'
+ax2.set_ylabel('Taxa de Inflação Total (%)', color=color_inflacao, fontsize=12)
+ax2.plot(df_correlation['Ano'], df_correlation['Taxa de Inflação Total (%)'], color=color_inflacao, marker='s', linestyle='-', label='Taxa de Inflação Total (%)', linewidth=2, markersize=7)
+ax2.tick_params(axis='y', labelcolor=color_inflacao)
+
+# Add data labels for Taxa de Inflação
+for x, y in zip(df_correlation['Ano'], df_correlation['Taxa de Inflação Total (%)']):
+    ax2.text(x, y + (df_correlation['Taxa de Inflação Total (%)'].max() * 0.08), f'{y:.2f}%'.replace(',', ' '), color=color_inflacao, fontsize=9, ha='center', va='bottom') # Increased offset
+
+# Set plot title
+plt.title('Correlação entre Poder de Compra e Taxa de Inflação (2018-2023)', fontsize=14, fontweight='bold', y=1.05) # Moved title up
+
+# Combine legends from both axes
+lines, labels = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax2.legend(lines + lines2, labels + labels2, loc='upper center', bbox_to_anchor=(0.5, 1.25), ncol=2, fontsize=10) 
+
+# Ensure x-axis ticks are integers for years
+ax1.set_xticks(df_correlation['Ano'].astype(int))
+
+# Add grid
+ax1.grid(True, linestyle='--', alpha=0.7)
+
+# Adjust layout to prevent labels from being cut off and move title slightly up
+fig.subplots_adjust(top=0.85) # Adjusted top margin for more space
+plt.show()

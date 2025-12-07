@@ -1,0 +1,96 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib.ticker as mticker
+
+# Hardcoded data for the new graph
+new_raw_data = {
+    'Ano': [2018, 2019, 2020, 2021, 2022, 2023],
+    'População > 65 anos (número)': [2628095, 2701994, 2764979, 2823971, 2879411, 2943941],
+    'População desempregada (número)': [713090, 735166, 737324, 645278, 732821, 708738],
+    'População em intensidade de pobreza (número)': [2314958, 2526485, 2814293, 2258472, 2680030, 2718591],
+    'Pop_risco_pobreza_exclusao_social_abs': [2222100, 2173000, 2056200, 2311500, 2083600, 2103600]
+}
+
+df_new_graph = pd.DataFrame(new_raw_data)
+
+# Define the lists for plotting (replicated from previous steps)
+columns_for_new_plot = [
+    'População > 65 anos (número)',
+    'População desempregada (número)',
+    'População em intensidade de pobreza (número)',
+    'Pop_risco_pobreza_exclusao_social_abs'
+]
+
+labels_for_new_plot = [
+    'População > 65 anos',
+    'População desempregada',
+    'População em intensidade de pobreza',
+    'População em risco de pobreza ou exclusão social'
+]
+
+markers = ['o', 's', '^', 'X'] # Adjusted to match the number of lines
+linestyles = ['-', '-', '-', '-'] # All solid lines as requested
+
+
+# Set a seaborn style for better aesthetics
+sns.set_theme(style="whitegrid")
+
+# Create a figure and a set of subplots
+fig, ax = plt.subplots(figsize=(14, 10)) # Increased figure height slightly more to accommodate data labels
+
+# Plot each column
+for i, col in enumerate(columns_for_new_plot):
+    # Define specific colors and solid linestyles as requested
+    if labels_for_new_plot[i] == 'População > 65 anos':
+        line_color = 'orange'
+    elif labels_for_new_plot[i] == 'População desempregada':
+        line_color = 'green'
+    elif labels_for_new_plot[i] == 'População em intensidade de pobreza':
+        line_color = 'red'
+    elif labels_for_new_plot[i] == 'População em risco de pobreza ou exclusão social':
+        line_color = 'purple'
+    else:
+        # This fallback is unlikely to be used with explicit checks above
+        line_color = colors[i] 
+
+    ax.plot(df_new_graph['Ano'], df_new_graph[col], color=line_color, marker=markers[i],
+             linestyle='-', label=labels_for_new_plot[i], linewidth=2, markersize=7)
+
+    # Add data labels for each point
+    max_plotted_value_individual_line = df_new_graph[col].max() # Max value for current line
+    for x, y in zip(df_new_graph['Ano'], df_new_graph[col]):
+        # Format y value to remove '.0' if it's an integer, otherwise keep float format
+        if y == int(y):
+            label = f'{int(y):,}'.replace(',', ' ')
+        else:
+            label = f'{y:,.0f}'.replace(',', ' ')
+
+        ax.text(x, y + (max_plotted_value_individual_line * 0.01), label, # Use individual line max for label placement
+                color=line_color, fontsize=8, ha='center', va='bottom')
+
+# Set x-axis label
+ax.set_xlabel('Ano', fontsize=12)
+
+# Set y-axis label
+ax.set_ylabel('Número de Pessoas', fontsize=12)
+
+# Set plot title
+ax.set_title('Tendências Demográficas e Socioeconômicas em Portugal (2018-2023) - Números Absolutos (Excluindo População Total)', fontsize=14, fontweight='bold')
+
+# Calculate dynamic upper limit for y-axis from the plotted columns
+max_plotted_value = df_new_graph[columns_for_new_plot].values.max()
+ax.set_ylim(bottom=0, top=max_plotted_value * 1.1) # Increased buffer to accommodate data labels
+
+# Format y-axis ticks to display full numbers with thousands separators
+formatter = mticker.FormatStrFormatter('%1.0f')
+ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, p: f'{int(x):,}'.replace(',', ' ')))
+
+# Add legend with improved font size, location, and multiple columns
+ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=2, fontsize=10) # Adjusted bbox_to_anchor for more space
+
+# Adjust layout to prevent labels from being cut off
+fig.subplots_adjust(top=0.8) # Adjusted top margin
+ax.grid(True, linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
