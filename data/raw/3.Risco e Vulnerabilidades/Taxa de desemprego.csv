@@ -1,0 +1,51 @@
+
+Quadro extraído em 07 de Dezembro de 2025 (01:14:01)
+http://www.ine.pt
+
+
+
+Período de referência dos dados (1) ;Grupo etário;Taxa de desemprego (%) da população ativa com idade entre 16 e 74 anos por Grupo etário -  Mensal (2) ;
+;;Local de residência (Portugal);
+;;PT: Portugal;
+;;% ;
+Dezembro de 2023;Total;6,7;
+Dezembro de 2022;Total;7;
+Dezembro de 2021;Total;6,2;
+Dezembro de 2020;Total;7,1;
+Dezembro de 2019;Total;7,1;
+Dezembro de 2018;Total;6,9;
+
+Taxa de desemprego (%) da população ativa com idade entre 16 e 74 anos por Grupo etário -  Mensal - INE, Estatísticas Mensais de Emprego e Desemprego com base no Inquérito ao Emprego
+
+Nota(s):
+(1) Os valores de fevereiro de 1998 a janeiro de 2011 foram obtidos a partir de ponderadores calibrados com base nas Estimativas Mensais de População Residente, calculadas especificamente para o Inquérito ao Emprego em função dos resultados definitivos dos Censos 2011.<br>Os valores de fevereiro 2011 em diante foram obtidos a partir de ponderadores calibrados com base nas Estimativas Mensais de População Residente, calculadas especificamente para o Inquérito ao Emprego em função dos resultados definitivos dos Censos 2021.
+
+(2) As estimativas mensais são referentes a trimestres móveis centrados, em que o mês de referência indicado corresponde ao mês central de cada trimestre.
+
+
+
+Última atualização destes dados: 28 de novembro de 2025
+
+
+Metainformação associada ao quadro
+
+Taxa de desemprego (%) da população ativa com idade entre 16 e 74 anos
+Designação;Taxa de desemprego (%) da população ativa com idade entre 16 e 74 anos por Grupo etário -  Mensal
+Periodicidade;Mensal
+Fonte;INE, Estatísticas Mensais de Emprego e Desemprego com base no Inquérito ao Emprego
+Primeiro período disponível;Fevereiro de 1998
+Último período disponível;Outubro de 2025
+Dimensões
+     Dimensão 1;Período de referência dos dados (Mês)
+     Dimensão 2;Local de residência (Portugal)
+     Dimensão 3;Grupo etário
+Conceitos
+     TAXA DE DESEMPREGO;Taxa que define a relação entre a população desempregada e a população ativa.
+     GRUPO ETÁRIO;Intervalo de idade, em anos, no qual o indivíduo se enquadra, de acordo com o momento de referência
+     PERÍODO DE REFERÊNCIA;Período a que a informação se refere e que pode ser um dia específico ou um intervalo de tempo (mês, ano fiscal, ano civil, entre outros).
+     POPULAÇÃO ATIVA;População formada por todos os indivíduos ativos.
+Definição;
+Fórmula;&lt - p&gt - (Popula&ccedil - &atilde - o ativa desempregada com idade entre 16 e 74 anos/ Popula&ccedil - &atilde - o ativa com idade entre 16 e 74 anos)*100&lt - /p&gt - 
+Unidade de Medida (símbolo);Percentagem (%)
+Potência de 10;0
+Data da última atualização;28-Nov-2025

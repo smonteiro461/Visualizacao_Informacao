@@ -1,0 +1,56 @@
+
+Quadro extraído em 07 de Dezembro de 2025 (01:14:46)
+http://www.ine.pt
+
+
+
+Período de referência dos dados;Local de residência (Portugal);Taxa de intensidade da pobreza (%) por Sexo e Grupo etário -  Anual (2) ;;;
+;;Sexo;;;
+;;HM;H;M;
+;;Grupo etário (1) ;;;
+;;Total;;;
+;;% ;% ;% ;
+2023;PT: Portugal;25,7;26,2;25,3;
+2022;PT: Portugal;25,6;25,8;25,1;
+2021;PT: Portugal;21,7;21,8;21,5;
+2020;PT: Portugal;27,1;27,4;26,8;
+2019;PT: Portugal;24,4;24,4;24,5;
+2018;PT: Portugal;22,4;23,2;22,1;
+
+Taxa de intensidade da pobreza (%) por Sexo e Grupo etário -  Anual - INE, Inquérito às condições de vida e rendimento
+
+Nota(s):
+(1) Em 2024 (rendimentos de 2023), pela primeira vez foram integrados dados fiscais no apuramento das Pensões de velhice, o que, em comparação com os dados de inquérito, se pode traduzir numa quebra de série, no sentido descendente, nos valores monetários destas pensões.
+
+(2) Os dados referentes ao ano n são recolhidos pelo ICOR realizado em n+1.
+
+
+
+Última atualização destes dados: 03 de dezembro de 2024
+
+
+Metainformação associada ao quadro
+
+Taxa de intensidade da pobreza (%)
+Designação;Taxa de intensidade da pobreza (%) por Sexo e Grupo etário -  Anual
+Periodicidade;Anual
+Fonte;INE, Inquérito às condições de vida e rendimento
+Primeiro período disponível;2003
+Último período disponível;2023
+Dimensões
+     Dimensão 1;Período de referência dos dados
+     Dimensão 2;Local de residência (Portugal)
+     Dimensão 3;Sexo
+     Dimensão 4;Grupo etário
+Conceitos
+     PERÍODO DE REFERÊNCIA;Período a que a informação se refere e que pode ser um dia específico ou um intervalo de tempo (mês, ano fiscal, ano civil, entre outros).
+     GRUPO ETÁRIO;Intervalo de idade, em anos, no qual o indivíduo se enquadra, de acordo com o momento de referência
+     SEXO;Características biológicas e fisiológicas que definem homens e mulheres.
+     INTENSIDADE DA POBREZA;Indicador que se destina a avaliar a medida em que o nível de vida da população abaixo do risco de pobreza está abaixo da linha de pobreza e que se calcula da seguinte forma: (linha de pobreza - o rendimento médio da população abaixo da linha de pobreza) / a linha de pobreza.
+     AGREGADO DOMÉSTICO PRIVADO;Conjunto de pessoas que residem no mesmo alojamento e cujas despesas fundamentais ou básicas (alimentação, alojamento) são suportadas conjuntamente, independentemente da existência ou não de laços de parentesco; ou a pessoa que ocupa integralmente um alojamento ou que, partilhando-o com outros, não satisfaz a condição anterior.
+     POPULAÇÃO RESIDENTE;Conjunto de pessoas que, independentemente de estarem presentes ou ausentes num determinado alojamento no momento de observação, viveram no seu local de residência habitual por um período contínuo de, pelo menos, 12 meses anteriores ao momento de observação, ou que chegaram ao seu local de residência habitual durante o período correspondente aos 12 meses anteriores ao momento de observação, com a intenção de aí permanecer por um período mínimo de um ano.
+Definição;
+Fórmula;
+Unidade de Medida (símbolo);Percentagem (%)
+Potência de 10;0
+Data da última atualização;03-Dec-2024

@@ -1,0 +1,42 @@
+
+Quadro extraído em 07 de Dezembro de 2025 (01:12:51)
+http://www.ine.pt
+
+
+
+Local de residência (Distrito/ Região);Índice de envelhecimento (N.º) por Local de residência (Distrito/ Região) -  Anual;;;;;;
+;Período de referência dos dados (1) ;;;;;;
+;2023;2022;2021;2020;2019;2018;
+;N.º ;N.º ;N.º ;N.º ;N.º ;N.º ;
+PT: Portugal;188,1;184,4;181,3;175,6;169,4;163,2;
+
+Índice de envelhecimento (N.º) por Local de residência (Distrito/ Região) -  Anual - INE, Estimativas anuais da população residente
+
+Nota(s):
+(1) 2011-2020, Estimativas Definitivas de População Residente - estimativas intercensitárias revistas (revisão regular geral) tendo por referência os resultados dos Censos 2011 e 2021. A partir de 2021, Estimativas Provisórias de População Residente - estimativas pós-censitárias assentes nos resultados dos Censos 2021. <BR>2022, Estimativas Provisórias de População Residente revistas em junho de 2024, que incluem na população residente as pessoas deslocadas da Ucrânia beneficiárias do regime de Proteção Temporária em Portugal.
+
+
+
+Última atualização destes dados: 18 de junho de 2025
+
+
+Metainformação associada ao quadro
+
+Índice de envelhecimento (N.º)
+Designação;Índice de envelhecimento (N.º) por Local de residência (Distrito/ Região) -  Anual
+Periodicidade;Anual
+Fonte;INE, Estimativas anuais da população residente
+Primeiro período disponível;1991
+Último período disponível;2024
+Dimensões
+     Dimensão 1;Período de referência dos dados
+     Dimensão 2;Local de residência (Distrito/ Região)
+Conceitos
+     POPULAÇÃO RESIDENTE;Pessoas que, independentemente de no momento de observação - zero horas do dia de referência - estarem presentes ou ausentes numa determinada unidade de alojamento, aí habitam a maior parte do ano com a família ou detêm a totalidade ou a maior parte dos seus haveres.
+     PERÍODO DE REFERÊNCIA;Período a que a informação se refere e que pode ser um dia específico ou um intervalo de tempo (mês, ano fiscal, ano civil, entre outros).
+     ÍNDICE DE ENVELHECIMENTO;Relação entre a população idosa e a população jovem, definida habitualmente como o quociente entre o número de pessoas com 65 ou mais anos e o número de pessoas com idades compreendidas entre os 0 e os 14 anos (expressa habitualmente por 100 (10^2) pessoas dos 0 aos 14 anos).
+Definição;
+Fórmula;&lt - p&gt - IE=[(P(65, +)/ P(0, 14)]*10^n&lt - br /&gt - &lt - br /&gt - P(65, +)=Popula&ccedil - &atilde - o residente com 65 e mais anos de idade. &lt - br /&gt - P(0, 14)=Popula&ccedil - &atilde - o residente com idade entre 0 e 14 anos.&lt - br /&gt - n=2.&lt - /p&gt - 
+Unidade de Medida (símbolo);Número (N.º)
+Potência de 10;0
+Data da última atualização;18-Jun-2025
