@@ -1,6 +1,6 @@
 # Visualizacao_Informacao
 # Crise Habitacional e a População Sem-Abrigo (2018-2023) 
-Estado Atual: Fase 1 - Exploração Inicial e Prototipagem Experimental
+Estado Atual: Fase 2 - Protótipo estático com ferramentas de dashboard
 
 ## Contexto e Motivação
 O tema central deste projeto é a habitação, um domínio crítico em Portugal marcado pelo aumento contínuo dos preços, pressão no arrendamento e dificuldades crescentes das famílias. O cenário atual é alarmante: o aumento da inflação tem contribuído para o surgimento de novos casos de sem-abrigo e Portugal ocupa posições preocupantes nos rankings europeus de exclusão habitacional.
