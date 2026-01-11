@@ -7,18 +7,12 @@ O tema central deste projeto é a habitação, um domínio crítico em Portugal 
 
 Face à relevância social e económica destes fatores, este projeto foca-se na interseção entre a crise habitacional e a população em situação de sem-abrigo, procurando identificar padrões e relações através da visualização de dados.
 
-## Metodologia
-O tratamento de dados seguiu um pipeline estruturado:
-1. **Recolha e Curadoria:** Dados da Pordata, INE, ENIPSSA e Idealista.
-2. **Pré-processamento (Data Wrangling):** Limpeza manual de formatações inconsistentes e dados em falta ('x').
-3. **Transformação:** Normalização dos valores pela população residente.
-4. **Visualização:** Criação de Matrix Plots (Heatmaps) para análise espaciotemporal.
-
 ## Ferramentas Utilizadas
 * **Python:** Para limpeza de dados e geração de gráficos.
 * **Google Colab:** Ambiente de desenvolvimento de gráficos.
 * **Excel:** Para triagem inicial.
 * **RAWGraphs:** Para prototipagem rápida.
+* **Tableau Public:** Para criação da visualização
 
 ## Estrutura do Repositório
 * `/data`: Contém os datasets originais e os processados.
@@ -26,22 +20,23 @@ O tratamento de dados seguiu um pipeline estruturado:
 * `/visualizations`: Imagens exportadas em alta resolução.
 * `/report`: Relatórios em PDF.
 
-## Visualizações
-1. A Geografia da Exclusão
-Visualização da Taxa de Sem-Abrigo por 10.000 Habitantes. 
-[Ver Imagem](https://github.com/smonteiro461/Visualizacao_Informacao/blob/f9ad8fee93900fd515830d6d5ce283438d186053/visualizacoes/finais%20fase%201/1.Taxa%20de%20Sem-Abrigo%20por%2010.000%20Habitantes.png). 
+## ⚖️ Licenciamento e Utilização de Dados (Data & Licensing)
 
+### Origem dos Dados
+Este projeto utiliza dados públicos provenientes de fontes oficiais portuguesas e plataformas de imobiliário. A recolha e tratamento de dados respeita as políticas de dados abertos das respetivas entidades para fins de investigação académica e não comercial.
 
-3. Desigualdade na distribuição do rendimento
-Visualização da desigualdade na distribuição do rendimento bruto declarado por distrito. 
-[Ver Imagem](https://github.com/smonteiro461/Visualizacao_Informacao/blob/f9ad8fee93900fd515830d6d5ce283438d186053/visualizacoes/finais%20fase%201/2.Desigualdade%20na%20distribui%C3%A7%C3%A3o%20do%20rendimento%20bruto%20declarado%20dos%20agregados%20fiscais.png)
+**Fontes Primárias:**
+* **INE (Instituto Nacional de Estatística):** Dados censitários e índices de preços. [Política de Difusão do INE](https://www.ine.pt)
+* **PORDATA:** Indicadores macroeconómicos. [Direitos de Utilização Pordata](https://www.pordata.pt)
+* **ENIPSSA:** Relatórios de Estratégia Nacional para a Integração das Pessoas em Situação de Sem-Abrigo.
+* **Idealista:** Dados de mercado de arrendamento e venda de imóveis.
 
+### Isenção de Responsabilidade (Disclaimer)
+Os dados brutos ("raw data") aqui disponibilizados ou transformados pertencem às entidades originais citadas. Este repositório não reivindica propriedade sobre os dados originais, apenas sobre a curadoria, limpeza e metodologia de visualização aplicada. A republicação dos ficheiros de dados processados neste repositório destina-se exclusivamente a suportar a reprodutibilidade deste trabalho académico.
 
-5. Poder de compra
-Visualização do poder de compra por distrito.
-[Ver Imagem](visualizations/heatmap_azul_final.png)
-
-
+### Licença do Projeto
+O código, a estrutura do Dashboard e a documentação visual deste projeto estão licenciados sob a licença **MIT** (ver ficheiro LICENSE).
+Os dados subjacentes mantêm a licença e os direitos de autor das suas fontes originais.
 
 ---
 **Autores:** Sophia Pamella Rufina Ribeiro - 2024118280
