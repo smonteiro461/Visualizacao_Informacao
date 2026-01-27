@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrões Emergentes: Habitação e Exclusão</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        :root {
+            --blue: #1F77B4;
+            --orange: #FF7F0E;
+            --grey: #94a3b8;
+            --bg: #f8f9fa;
+            --text: #333;
+        }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        
+        header { text-align: center; margin-bottom: 40px; padding: 30px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { margin: 0 0 10px 0; color: #2c3e50; letter-spacing: -0.5px; }
+        .intro { color: #666; max-width: 800px; margin: 0 auto; line-height: 1.5; }
+
+        .dashboard-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; max-width: 1400px; margin: 0 auto;
+        }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-12 { grid-column: span 12; }
+
+        .viz-card {
+            background: white; padding: 25px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+        
+        h3 { 
+            font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: #777; 
+            border-bottom: 1px solid #eee; padding-bottom: 15px; margin-top: 0; font-weight: 600;
+        }
+
+        .narrative {
+            background: #f8fafc; border-left: 4px solid var(--blue);
+            padding: 12px 15px; margin-top: auto; font-size: 0.85em; color: #475569; line-height: 1.4;
+        }
+
+        /* INTERATIVIDADE */
+        .dimmed { opacity: 0.1 !important; transition: opacity 0.2s; }
+        .highlighted { opacity: 1 !important; stroke: #2c3e50 !important; }
+        circle.highlighted, rect.highlighted, path.highlighted { fill: var(--orange) !important; }
+        line.highlighted { stroke: var(--orange) !important; stroke-width: 3px !important; }
+        path.line-highlighted { stroke: var(--orange) !important; stroke-width: 3px !important; opacity: 1 !important; }
+        
+        /* Estilo do Mapa de Mosaico */
+        .map-square { stroke: white; stroke-width: 2px; cursor: pointer; rx: 4px; transition: all 0.2s; }
+        .map-square:hover { stroke: #333; stroke-width: 2px; }
+        .map-label { font-size: 10px; fill: white; pointer-events: none; text-shadow: 0px 0px 2px rgba(0,0,0,0.5); }
+
+        #tooltip {
+            position: absolute; opacity: 0; background: rgba(255,255,255,0.98); 
+            border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; 
+            pointer-events: none; font-size: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            z-index: 1000; color: #1e293b;
+        }
+
+        .controls { display: flex; gap: 8px; margin-bottom: 15px; align-items: center; flex-wrap: wrap; }
+        button {
+            padding: 6px 12px; border: 1px solid #e2e8f0; background: white; 
+            cursor: pointer; border-radius: 4px; font-size: 11px; font-weight: 600; color: #64748b;
+            transition: all 0.2s;
+        }
+        button:hover { background: #f1f5f9; color: #333; }
+        button.active { background: var(--blue); color: white; border-color: var(--blue); }
+        .metric-btn.active { background: #334155; border-color: #334155; }
+
+        .axis text { fill: #94a3b8; font-size: 10px; }
+        .domain, .tick line { stroke: #e2e8f0; }
+        
+        /* Legenda customizada */
+        .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        .legend-bar { width: 8px; height: 8px; background: #ccc; display: inline-block; margin-right: 4px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Padrões Emergentes: Crise Habitacional e Sem-Abrigo</h1>
+        <p class="intro">
+            Análise baseada em dados reais (2018-2023) sobre a relação entre o mercado imobiliário, poder de compra e exclusão social em Portugal.<br>
+            <em style="font-size:0.9em; color:var(--blue)">Interaja com os gráficos para destacar distritos transversalmente.</em>
+        </p>
+    </header>
+
+    <div class="dashboard-grid">
+        
+        <div class="viz-card col-4">
+            <h3>1.1 Contexto: Vulnerabilidade Social</h3>
+            <div id="viz1-1"></div>
+            <div class="narrative">
+                Populações vulneráveis. A <strong>População Idosa (Verde)</strong> e em <strong>Risco de Pobreza (Laranja)</strong> crescem consistentemente.
+            </div>
+        </div>
+
+        <div class="viz-card col-4">
+            <h3>1.2 Inflação, Poder e Exclusão</h3>
+            <div style="font-size: 10px; margin-bottom: 5px; display: flex; justify-content: center; gap: 10px;">
+                <span><span class="legend-bar"></span>Inflação</span>
+                <span><span class="legend-dot" style="background:#1F77B4"></span>Poder Compra</span>
+                <span><span class="legend-dot" style="background:#FF7F0E"></span>Sem-Abrigo</span>
+            </div>
+            <div id="viz1-2"></div>
+            <div class="narrative">
+                O aumento do <strong>Poder de Compra (Azul)</strong> não evitou que o nº de <strong>Sem-Abrigo (Laranja)</strong> duplicasse para 26 mil, impulsionado pela inflação (2022).
+            </div>
+        </div>
+
+        <div class="viz-card col-4">
+            <h3>1.3 Desigualdade (S80/S20)</h3>
+            <div id="viz1-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;"></div>
+            <div class="narrative">
+                <span style="color:var(--blue)">Porto e Lisboa</span> mantêm os índices mais altos (>12), contrastando com o interior.
+            </div>
+        </div>
+
+        <div class="viz-card col-6">
+            <h3>2.1 A Escalada de Preços (2018-2023)</h3>
+            <div class="controls">
+                <button class="metric-btn active" onclick="setMetric('renda')">Arrendamento (€/m²)</button>
+                <button class="metric-btn" onclick="setMetric('compra')">Compra (€/m²)</button>
+                <span style="margin:0 5px; color:#ddd">|</span>
+                <button id="btn-val" class="active" onclick="setSort('value')">Maior Aumento</button>
+                <button id="btn-abc" onclick="setSort('name')">A-Z</button>
+            </div>
+            <div id="viz2-1"></div>
+            <div class="narrative" id="dumbbell-narrative"></div>
+        </div>
+
+        <div class="viz-card col-6" style="position:relative;">
+            <h3>2.2 Intensidade: Sem-Abrigo (Taxa/10k)</h3>
+            <div id="viz-map" style="display: flex; justify-content: center; height: 400px;"></div>
+            <div class="narrative" id="map-narrative">
+                <strong>Padrão Espacial:</strong> Passe o rato no mapa.
+                Destaque dramático para <strong>Beja</strong> (interior) com taxa >40/10k, revelando uma crise invisível.
+            </div>
+        </div>
+
+        <div class="viz-card col-12">
+            <h3>3. Clusters: Mercado vs. Exclusão</h3>
+            <div id="viz-scatter"></div>
+            <div class="narrative">
+                <strong>Análise de Clusters:</strong> Eixo X = Preço Habitação, Eixo Y = Taxa Sem-Abrigo. Tamanho = População.<br>
+                <strong>Pressão de Mercado</strong> (Lisboa/Porto à direita) vs <strong>Exclusão Estrutural</strong> (Beja isolada no topo).
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tooltip"></div>
+
+    <script>
+        // --- DADOS REAIS ---
+        const distritos = [
+            {"id": "aveiro", "nome": "Aveiro", "regiao": "Centro", "renda18": 3.89, "renda23": 5.77, "compra18": 994.0, "compra23": 1668.0, "semabrigo": 1.24, "semabrigo_total": 89, "populacao": 720038, "s80s20": 8.9, "rendimento_pc": 13563},
+            {"id": "beja", "nome": "Beja", "regiao": "Alentejo", "renda18": 4.09, "renda23": 5.69, "compra18": 793.0, "compra23": 1054.0, "semabrigo": 40.29, "semabrigo_total": 597, "populacao": 148163, "s80s20": 9.1, "rendimento_pc": 12275},
+            {"id": "braga", "nome": "Braga", "regiao": "Norte", "renda18": 4.35, "renda23": 6.98, "compra18": 911.0, "compra23": 1501.0, "semabrigo": 1.49, "semabrigo_total": 128, "populacao": 859818, "s80s20": 8.6, "rendimento_pc": 12260},
+            {"id": "braganca", "nome": "Bragança", "regiao": "Norte", "renda18": 2.49, "renda23": 3.19, "compra18": 688.0, "compra23": 872.0, "semabrigo": 2.37, "semabrigo_total": 29, "populacao": 122556, "s80s20": 9.1, "rendimento_pc": 11258},
+            {"id": "castelobranco", "nome": "Castelo Branco", "regiao": "Centro", "renda18": 3.14, "renda23": 4.0, "compra18": 668.0, "compra23": 867.0, "semabrigo": 0.0, "semabrigo_total": 0, "populacao": 178934, "s80s20": 7.1, "rendimento_pc": 11899},
+            {"id": "coimbra", "nome": "Coimbra", "regiao": "Centro", "renda18": 4.17, "renda23": 5.62, "compra18": 996.0, "compra23": 1391.0, "semabrigo": 6.55, "semabrigo_total": 272, "populacao": 415507, "s80s20": 9.4, "rendimento_pc": 15145},
+            {"id": "evora", "nome": "Évora", "regiao": "Alentejo", "renda18": 5.31, "renda23": 6.83, "compra18": 847.0, "compra23": 1322.0, "semabrigo": 8.81, "semabrigo_total": 135, "populacao": 153315, "s80s20": 7.2, "rendimento_pc": 13600},
+            {"id": "faro", "nome": "Faro", "regiao": "Algarve", "renda18": 5.52, "renda23": 7.25, "compra18": 2032.0, "compra23": 3251.0, "semabrigo": 2.64, "semabrigo_total": 127, "populacao": 481370, "s80s20": 9.8, "rendimento_pc": 13465},
+            {"id": "guarda", "nome": "Guarda", "regiao": "Centro", "renda18": 2.9, "renda23": 4.01, "compra18": 656.0, "compra23": 704.0, "semabrigo": 0.0, "semabrigo_total": 0, "populacao": 141810, "s80s20": 7.3, "rendimento_pc": 11838},
+            {"id": "leiria", "nome": "Leiria", "regiao": "Centro", "renda18": 3.8, "renda23": 5.3, "compra18": 1054.0, "compra23": 1557.0, "semabrigo": 0.93, "semabrigo_total": 44, "populacao": 474675, "s80s20": 7.3, "rendimento_pc": 12367},
+            {"id": "lisboa", "nome": "Lisboa", "regiao": "AML", "renda18": 7.0, "renda23": 11.05, "compra18": 2919.0, "compra23": 3896.0, "semabrigo": 14.44, "semabrigo_total": 3378, "populacao": 2338553, "s80s20": 12.7, "rendimento_pc": 14922},
+            {"id": "portalegre", "nome": "Portalegre", "regiao": "Alentejo", "renda18": 2.79, "renda23": 3.51, "compra18": 788.0, "compra23": 721.0, "semabrigo": 1.73, "semabrigo_total": 18, "populacao": 104192, "s80s20": 6.9, "rendimento_pc": 12635},
+            {"id": "porto", "nome": "Porto", "regiao": "Norte", "renda18": 5.07, "renda23": 7.98, "compra18": 1632.0, "compra23": 2516.0, "semabrigo": 3.25, "semabrigo_total": 597, "populacao": 1835685, "s80s20": 13.1, "rendimento_pc": 15653},
+            {"id": "santarem", "nome": "Santarém", "regiao": "Alentejo", "renda18": 3.48, "renda23": 5.63, "compra18": 770.0, "compra23": 1126.0, "semabrigo": 1.05, "semabrigo_total": 46, "populacao": 438377, "s80s20": 8.6, "rendimento_pc": 11884},
+            {"id": "setubal", "nome": "Setúbal", "regiao": "AML", "renda18": 5.14, "renda23": 8.95, "compra18": 1320.0, "compra23": 2444.0, "semabrigo": 1.15, "semabrigo_total": 103, "populacao": 897257, "s80s20": 0, "rendimento_pc": 0},
+            {"id": "vianadocastelo", "nome": "Viana do Castelo", "regiao": "Norte", "renda18": 4.0, "renda23": 6.31, "compra18": 999.0, "compra23": 1457.0, "semabrigo": 1.63, "semabrigo_total": 38, "populacao": 233444, "s80s20": 7.8, "rendimento_pc": 11577},
+            {"id": "vilareal", "nome": "Vila Real", "regiao": "Norte", "renda18": 3.53, "renda23": 4.68, "compra18": 749.0, "compra23": 942.0, "semabrigo": 1.41, "semabrigo_total": 26, "populacao": 184892, "s80s20": 9.2, "rendimento_pc": 11726},
+            {"id": "viseu", "nome": "Viseu", "regiao": "Centro", "renda18": 3.65, "renda23": 5.33, "compra18": 735.0, "compra23": 1066.0, "semabrigo": 0.2, "semabrigo_total": 7, "populacao": 353663, "s80s20": 8.2, "rendimento_pc": 11815}
+        ];
+
+        const data1_1 = [
+            {year: 2018, idosos: 2273940, pobreza: 2222100, desemprego: 713090},
+            {year: 2019, idosos: 2327150, pobreza: 2173000, desemprego: 735166},
+            {year: 2020, idosos: 2385368, pobreza: 2056200, desemprego: 737324},
+            {year: 2021, idosos: 2436949, pobreza: 2311500, desemprego: 645278},
+            {year: 2022, idosos: 2486274, pobreza: 2083600, desemprego: 732821},
+            {year: 2023, idosos: 2537740, pobreza: 2103600, desemprego: 708738}
+        ];
+
+        // DADOS 1.2: COM INFLAÇÃO E TOTAIS
+        const data1_2 = [
+            {year: 2018, poder: 205184, semabrigo: 12088, inflacao: 0.99},
+            {year: 2019, poder: 214374, semabrigo: 14214, inflacao: 0.34},
+            {year: 2020, poder: 200518, semabrigo: 16418, inflacao: -0.01},
+            {year: 2021, poder: 216493, semabrigo: 19208, inflacao: 1.27},
+            {year: 2022, poder: 243957, semabrigo: 21546, inflacao: 7.83},
+            {year: 2023, poder: 267384, semabrigo: 26256, inflacao: 4.31}
+        ];
+
+        const inequalityData = [{"distrito": "Viana do Castelo", "values": [{"year": 2018, "value": 7.9}, {"year": 2019, "value": 7.8}, {"year": 2020, "value": 7.7}, {"year": 2021, "value": 7.7}, {"year": 2022, "value": 7.7}, {"year": 2023, "value": 7.8}]}, {"distrito": "Braga", "values": [{"year": 2018, "value": 8.3}, {"year": 2019, "value": 8.1}, {"year": 2020, "value": 8.5}, {"year": 2021, "value": 8.4}, {"year": 2022, "value": 8.6}, {"year": 2023, "value": 8.6}]}, {"distrito": "Porto", "values": [{"year": 2018, "value": 12.6}, {"year": 2019, "value": 12.1}, {"year": 2020, "value": 12.8}, {"year": 2021, "value": 12.8}, {"year": 2022, "value": 13.0}, {"year": 2023, "value": 13.1}]}, {"distrito": "Aveiro", "values": [{"year": 2018, "value": 8.8}, {"year": 2019, "value": 8.7}, {"year": 2020, "value": 8.9}, {"year": 2021, "value": 8.5}, {"year": 2022, "value": 8.8}, {"year": 2023, "value": 8.9}]}, {"distrito": "Coimbra", "values": [{"year": 2018, "value": 9.3}, {"year": 2019, "value": 9.1}, {"year": 2020, "value": 9.2}, {"year": 2021, "value": 9.2}, {"year": 2022, "value": 9.3}, {"year": 2023, "value": 9.4}]}, {"distrito": "Castelo Branco", "values": [{"year": 2018, "value": 7.1}, {"year": 2019, "value": 7.0}, {"year": 2020, "value": 7.0}, {"year": 2021, "value": 6.9}, {"year": 2022, "value": 7.1}, {"year": 2023, "value": 7.1}]}, {"distrito": "Lisboa", "values": [{"year": 2018, "value": 11.8}, {"year": 2019, "value": 11.55}, {"year": 2020, "value": 12.5}, {"year": 2021, "value": 12.35}, {"year": 2022, "value": 12.5}, {"year": 2023, "value": 12.7}]}, {"distrito": "Beja", "values": [{"year": 2018, "value": 7.7}, {"year": 2019, "value": 7.8}, {"year": 2020, "value": 7.8}, {"year": 2021, "value": 7.7}, {"year": 2022, "value": 8.2}, {"year": 2023, "value": 9.1}]}, {"distrito": "Portalegre", "values": [{"year": 2018, "value": 6.8}, {"year": 2019, "value": 6.8}, {"year": 2020, "value": 7.0}, {"year": 2021, "value": 6.8}, {"year": 2022, "value": 6.9}, {"year": 2023, "value": 6.9}]}];
+
+        // --- FUNÇÕES ---
+        let currentMetric = 'renda';
+        let currentSort = 'value';
+        const tooltip = d3.select("#tooltip");
+
+        function highlight(distritoId) {
+            const targetClass = `.d-${distritoId}`;
+            d3.selectAll("rect, circle, line, path, .map-square").classed("dimmed", true);
+            d3.selectAll(targetClass).classed("dimmed", false).classed("highlighted", true).classed("line-highlighted", true);
+            const dist = distritos.find(d => d.id === distritoId);
+            if(dist) {
+                const val = currentMetric === 'renda' ? dist.renda23 : dist.compra23;
+                const label = currentMetric === 'renda' ? 'Renda' : 'Compra';
+                d3.select("#map-narrative").html(`<strong>${dist.nome}</strong> (2023)<br>${label}: ${val}€/m²<br>Sem-Abrigo: ${dist.semabrigo} (Taxa/10k)<br>População: ${(dist.populacao/1000).toFixed(0)}k`);
+            }
+        }
+
+        function unhighlight() {
+            d3.selectAll(".dimmed").classed("dimmed", false);
+            d3.selectAll(".highlighted").classed("highlighted", false);
+            d3.selectAll(".line-highlighted").classed("line-highlighted", false);
+            d3.select("#map-narrative").html("<strong>Padrão Espacial:</strong> Passe o rato para isolar um distrito.");
+        }
+
+        function setMetric(metric) {
+            currentMetric = metric;
+            d3.selectAll(".metric-btn").classed("active", false);
+            d3.selectAll(".metric-btn").filter((d, i, n) => n[i].innerText.toLowerCase().includes(metric === 'renda' ? 'arrendamento' : 'compra')).classed("active", true);
+            updateDumbbell();
+            updateScatter();
+        }
+
+        function setSort(sortType) {
+            currentSort = sortType;
+            d3.select("#btn-val").classed("active", sortType==='value');
+            d3.select("#btn-abc").classed("active", sortType==='name');
+            updateDumbbell();
+        }
+
+        // --- VIZ 1.1 ---
+        function drawViz1_1() {
+            const margin = {top: 20, right: 30, bottom: 30, left: 40}, width = 400 - margin.left - margin.right, height = 200 - margin.top - margin.bottom;
+            const svg = d3.select("#viz1-1").append("svg").attr("viewBox", `0 0 400 200`).append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+            const x = d3.scaleLinear().domain([2018, 2023]).range([0, width]);
+            const y = d3.scaleLinear().domain([0, 2700000]).range([height, 0]);
+            svg.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickFormat(d3.format("d"))).select(".domain").remove();
+            svg.append("g").call(d3.axisLeft(y).tickFormat(d => d/1000000 + "M").ticks(4)).select(".domain").remove();
+            const keys = ["idosos", "pobreza", "desemprego"];
+            const colors = {idosos: "#2ca02c", pobreza: "#FF7F0E", desemprego: "#1F77B4"};
+            keys.forEach(k => {
+                const line = d3.line().x(d => x(d.year)).y(d => y(d[k])).curve(d3.curveMonotoneX);
+                svg.append("path").datum(data1_1).attr("fill", "none").attr("stroke", colors[k]).attr("stroke-width", 2).attr("d", line);
+                svg.selectAll(`circle.${k}`).data(data1_1).enter().append("circle").attr("cx", d => x(d.year)).attr("cy", d => y(d[k])).attr("r", 3).attr("fill", colors[k])
+                   .on("mouseover", (e, d) => tooltip.style("opacity", 1).html(`<strong>${k.toUpperCase()}</strong><br>${(d[k]/1000000).toFixed(2)}M pessoas`).style("left", (e.pageX+10)+"px").style("top", (e.pageY-20)+"px"))
+                   .on("mouseout", () => tooltip.style("opacity", 0));
+            });
+        }
+
+        // --- VIZ 1.2 (3 FATORES) ---
+        function drawViz1_2() {
+            const margin = {top: 20, right: 40, bottom: 30, left: 45}, width = 400 - margin.left - margin.right, height = 200 - margin.top - margin.bottom;
+            const svg = d3.select("#viz1-2").append("svg").attr("viewBox", `0 0 400 200`).append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            const x = d3.scaleBand().domain(data1_2.map(d => d.year)).range([0, width]).padding(0.3);
+            const y1 = d3.scaleLinear().domain([200000, 270000]).range([height, 0]); // Poder
+            const y2 = d3.scaleLinear().domain([0, 30000]).range([height, 0]); // Sem Abrigo
+            const y3 = d3.scaleLinear().domain([-1, 10]).range([height, 0]); // Inflação
+
+            // Barras de Inflação
+            svg.selectAll(".bar-inflacao").data(data1_2).enter().append("rect")
+                .attr("x", d => x(d.year)).attr("width", x.bandwidth())
+                .attr("y", d => y3(Math.max(0, d.inflacao)))
+                .attr("height", d => Math.abs(y3(d.inflacao) - y3(0)))
+                .attr("fill", "#ccc").attr("opacity", 0.5)
+                .on("mouseover", (e,d)=> tooltip.style("opacity",1).html(`Inflação: ${d.inflacao}%`).style("left", (e.pageX)+"px").style("top", (e.pageY)+"px")).on("mouseout", ()=>tooltip.style("opacity",0));
+
+            svg.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickFormat(d3.format("d"))).select(".domain").remove();
+            svg.append("g").call(d3.axisLeft(y1).ticks(4).tickFormat(d => d/1000 + "k")).select(".domain").remove().selectAll("text").attr("fill", "#1F77B4");
+            svg.append("g").attr("transform", `translate(${width},0)`).call(d3.axisRight(y2).ticks(4)).select(".domain").remove().selectAll("text").attr("fill", "#FF7F0E");
+
+            const line1 = d3.line().x(d => x(d.year) + x.bandwidth()/2).y(d => y1(d.poder));
+            svg.append("path").datum(data1_2).attr("fill", "none").attr("stroke", "#1F77B4").attr("stroke-width", 2).attr("d", line1);
+            
+            const line2 = d3.line().x(d => x(d.year) + x.bandwidth()/2).y(d => y2(d.semabrigo));
+            svg.append("path").datum(data1_2).attr("fill", "none").attr("stroke", "#FF7F0E").attr("stroke-width", 2).attr("d", line2);
+            
+            svg.selectAll("circle.eco").data(data1_2).enter().append("circle").attr("cx", d=>x(d.year)+x.bandwidth()/2).attr("cy", d=>y1(d.poder)).attr("r", 3).attr("fill", "#1F77B4")
+               .on("mouseover", (e,d)=> tooltip.style("opacity",1).html(`Poder: ${d.poder.toLocaleString()}M€`).style("left", (e.pageX)+"px").style("top", (e.pageY)+"px")).on("mouseout", ()=>tooltip.style("opacity",0));
+            svg.selectAll("circle.homeless").data(data1_2).enter().append("circle").attr("cx", d=>x(d.year)+x.bandwidth()/2).attr("cy", d=>y2(d.semabrigo)).attr("r", 3).attr("fill", "#FF7F0E")
+               .on("mouseover", (e,d)=> tooltip.style("opacity",1).html(`Sem-Abrigo: ${d.semabrigo.toLocaleString()}`).style("left", (e.pageX)+"px").style("top", (e.pageY)+"px")).on("mouseout", ()=>tooltip.style("opacity",0));
+        }
+
+        // --- VIZ 1.3 ---
+        function drawViz1_3() {
+            const container = d3.select("#viz1-3");
+            const w = 120, h = 60;
+            inequalityData.forEach(d => {
+                const div = container.append("div").style("text-align", "center");
+                const distInfo = distritos.find(x => x.nome === d.distrito);
+                const id = distInfo ? distInfo.id : "unknown";
+                div.append("div").text(d.distrito).style("font-size", "10px").style("font-weight", "bold").style("color", d.distrito==="Beja"?"#FF7F0E":(d.distrito==="Lisboa"||d.distrito==="Porto"?"#1F77B4":"#666"));
+                const svg = div.append("svg").attr("width", w).attr("height", h);
+                const x = d3.scaleLinear().domain([2018, 2023]).range([5, w-15]);
+                const y = d3.scaleLinear().domain([6, 14]).range([h-5, 5]);
+                const line = d3.line().x(v => x(v.year)).y(v => y(v.value));
+                svg.append("path").datum(d.values).attr("d", line).attr("fill", "none").attr("stroke", d.distrito==="Beja"?"#FF7F0E":(d.distrito==="Lisboa"||d.distrito==="Porto"?"#1F77B4":"#ccc")).attr("stroke-width", 2).attr("class", `d-${id}`).on("mouseover", () => highlight(id)).on("mouseout", unhighlight);
+                svg.append("text").attr("x", w-12).attr("y", y(d.values[5].value)).text(d.values[5].value).style("font-size", "9px").attr("fill", "#666");
+            });
+        }
+
+        // --- VIZ 2.1 ---
+        let dumbbellSvg, yDumbbell;
+        function drawViz2_1() {
+            const margin = {top: 25, right: 20, bottom: 20, left: 100}, width = 600 - margin.left - margin.right, height = 400 - margin.top - margin.bottom;
+            dumbbellSvg = d3.select("#viz2-1").append("svg").attr("viewBox", `0 0 600 400`).append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+            yDumbbell = d3.scaleBand().range([0, height]).padding(1);
+            dumbbellSvg.append("g").attr("class", "x-axis").attr("transform", "translate(0,-10)");
+            dumbbellSvg.append("g").attr("class", "y-axis");
+            updateDumbbell();
+        }
+
+        function updateDumbbell() {
+            const k18 = currentMetric === 'renda' ? 'renda18' : 'compra18';
+            const k23 = currentMetric === 'renda' ? 'renda23' : 'compra23';
+            const maxVal = currentMetric === 'renda' ? 12 : 4000;
+            const sorted = [...distritos].sort((a,b) => currentSort === 'value' ? (b[k23] - b[k18]) - (a[k23] - a[k18]) : a.nome.localeCompare(b.nome));
+            const x = d3.scaleLinear().domain([0, maxVal]).range([0, 480]);
+            yDumbbell.domain(sorted.map(d => d.nome));
+            dumbbellSvg.select(".x-axis").transition().duration(1000).call(d3.axisTop(x).ticks(5)).select(".domain").remove();
+            dumbbellSvg.select(".y-axis").transition().duration(1000).call(d3.axisLeft(yDumbbell).tickSize(0)).select(".domain").remove();
+            const lines = dumbbellSvg.selectAll("line.connector").data(sorted, d => d.id);
+            lines.enter().append("line").attr("class", d => `connector d-${d.id}`).attr("stroke", "#cbd5e1").attr("stroke-width", 3).merge(lines).transition().duration(1000).attr("x1", d => x(d[k18])).attr("x2", d => x(d[k23])).attr("y1", d => yDumbbell(d.nome)).attr("y2", d => yDumbbell(d.nome));
+            const drawDots = (cls, key, col) => {
+                const dots = dumbbellSvg.selectAll(`circle.${cls}`).data(sorted, d => d.id);
+                dots.enter().append("circle").attr("class", d => `${cls} d-${d.id}`).attr("r", 5).attr("fill", col).on("mouseover", (e, d) => { highlight(d.id); tooltip.style("opacity", 1).html(`<strong>${d.nome}</strong><br>2018: ${d[k18]}<br>2023: ${d[k23]}`).style("left", (e.pageX)+"px").style("top", (e.pageY)+"px"); }).on("mouseout", () => { unhighlight(); tooltip.style("opacity", 0); }).merge(dots).transition().duration(1000).attr("cx", d => x(d[key])).attr("cy", d => yDumbbell(d.nome));
+            };
+            drawDots("dot18", k18, "#94a3b8");
+            drawDots("dot23", k23, "#1F77B4");
+            d3.select("#dumbbell-narrative").text(currentMetric === 'renda' ? "Aumento das Rendas (€/m²). Destaque para Lisboa e Porto." : "Aumento na Compra (€/m²). Fosso Litoral vs Interior agrava-se.");
+        }
+
+        // --- MAPA (GRID MAP - FALLBACK ROBUSTO) ---
+        // Desenha quadrados na posição geográfica correta para evitar ecrã branco
+        function drawMap() {
+            const width = 300, height = 350;
+            const svg = d3.select("#viz-map").append("svg").attr("width", width).attr("height", height);
+            
+            // Layout Geográfico dos Distritos (Tile Grid Map)
+            const grid = [
+                {id: "vianadocastelo", x:0, y:0}, {id: "braga", x:1, y:0}, {id: "vilareal", x:2, y:0}, {id: "braganca", x:3, y:0},
+                {id: "porto", x:0, y:1}, {id: "viseu", x:1, y:1}, {id: "guarda", x:2, y:1},
+                {id: "aveiro", x:0, y:2}, {id: "coimbra", x:1, y:2}, {id: "castelobranco", x:2, y:2},
+                {id: "leiria", x:0, y:3}, {id: "santarem", x:1, y:3}, {id: "portalegre", x:2, y:3},
+                {id: "lisboa", x:0, y:4}, {id: "setubal", x:1, y:4}, {id: "evora", x:2, y:4},
+                {id: "beja", x:2, y:5}, {id: "faro", x:2, y:6}
+            ];
+            
+            const color = d3.scaleThreshold().domain([2, 5, 15, 30]).range(["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]);
+
+            svg.selectAll("rect").data(grid).enter().append("rect").attr("class", d => `map-square d-${d.id}`)
+                .attr("x", d => d.x * 50 + 50).attr("y", d => d.y * 45 + 20).attr("width", 45).attr("height", 40).attr("rx", 4)
+                .attr("fill", d => { const val = distritos.find(x => x.id === d.id); return val ? color(val.semabrigo) : "#ccc"; })
+                .on("mouseover", (e,d) => highlight(d.id)).on("mouseout", unhighlight);
+
+            svg.selectAll("text").data(grid).enter().append("text").attr("class", "map-label")
+                .attr("x", d => d.x * 50 + 72).attr("y", d => d.y * 45 + 45)
+                .text(d => d.id.substring(0,3).toUpperCase()).attr("text-anchor", "middle");
+        }
+
+        // --- SCATTER ---
+        let scatterSvg, scatterX;
+        function drawScatter() {
+            const margin = {top: 20, right: 30, bottom: 40, left: 50}, width = 1200 - margin.left - margin.right, height = 300 - margin.top - margin.bottom;
+            scatterSvg = d3.select("#viz-scatter").append("svg").attr("viewBox", `0 0 1200 300`).append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+            scatterX = d3.scaleLinear().domain([0, 15]).range([0, width]);
+            const y = d3.scaleLinear().domain([0, 45]).range([height, 0]); 
+            
+            scatterSvg.append("g").attr("class", "x-axis").attr("transform", `translate(0,${height})`).call(d3.axisBottom(scatterX));
+            scatterSvg.append("g").call(d3.axisLeft(y));
+            scatterSvg.append("text").attr("class", "x-label").attr("x", width/2).attr("y", height+35).text("Preço Habitação");
+            scatterSvg.append("text").attr("transform", "rotate(-90)").attr("y", -35).attr("x", -height/2).text("Taxa Sem-Abrigo (por 10k)");
+
+            scatterSvg.selectAll("circle").data(distritos).enter().append("circle").attr("class", d => `d-${d.id}`)
+                .attr("cx", d => scatterX(d.renda23)).attr("cy", d => y(d.semabrigo))
+                .attr("r", d => Math.sqrt(d.populacao)/50) 
+                .attr("fill", d => d.regiao === "Alentejo" ? "#FF7F0E" : "#1F77B4").attr("opacity", 0.7).attr("stroke", "white")
+                .on("mouseover", (e, d) => { highlight(d.id); tooltip.style("opacity", 1).html(`<strong>${d.nome}</strong><br>Sem-Abrigo: ${d.semabrigo} (Taxa)<br>População: ${d.populacao}`).style("left", (e.pageX+10)+"px").style("top", (e.pageY-20)+"px"); })
+                .on("mouseout", () => { unhighlight(); tooltip.style("opacity", 0); });
+        }
+
+        function updateScatter() {
+            const k = currentMetric === 'renda' ? 'renda23' : 'compra23';
+            const maxVal = currentMetric === 'renda' ? 15 : 4000;
+            scatterX.domain([0, maxVal]);
+            scatterSvg.select(".x-axis").transition().duration(1000).call(d3.axisBottom(scatterX));
+            scatterSvg.select(".x-label").text(currentMetric === 'renda' ? "Renda Média (€/m²)" : "Preço Compra (€/m²)");
+            scatterSvg.selectAll("circle").transition().duration(1000).attr("cx", d => scatterX(d[k]));
+        }
+
+        drawViz1_1(); drawViz1_2(); drawViz1_3(); drawViz2_1(); drawMap(); drawScatter();
+
+    </script>
+</body>
+</html>
