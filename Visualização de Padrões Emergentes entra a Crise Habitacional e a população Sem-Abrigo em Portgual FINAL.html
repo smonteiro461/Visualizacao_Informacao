@@ -427,7 +427,7 @@
     svg.append("g")
         .call(d3.axisLeft(yPoder).ticks(5).tickFormat(d => d/1000 + "k"))
         .select(".domain").remove();
-    svg.selectAll(".tick text").attr("fill", "#1F77B4");
+    svg.selectAll(".tick text").attr("fill", "#000");
 
     // EIXO Y DIREITO (INFLAÇÃO)
     svg.append("g")
